@@ -20,20 +20,20 @@ int main()
     float result; /* Resultado del cálculo de la integral */
 
     /* Reloj */
-    clock_t t_ini, t_fin;
+    double t_ini, t_fin;
     double secs;
 
     /* Realizamos el cálculo de la integral con entre 1-8 threads */
     for (int thr = 1; thr <= 8; thr++)
     {
         /* Iniciamos el reloj, para medir cuánto tardan en realizarse los cálculos */
-        t_ini = clock();
+        t_ini = omp_get_wtime();
 
         /* Realizamos los cálculos*/
         result = pi(sumas, thr);
-        t_fin = clock();
-        secs = (double)(t_fin - t_ini) / CLOCKS_PER_SEC;
-        
+        t_fin = omp_get_wtime();
+        secs = t_fin - t_ini;
+    
         /* Imprimos los resultados */
         printf("\nNº Threads: %d\tResultado final calculado: %1.15f\n", thr, result);
         printf("Tiempo de cómputo: %5.5f ms\n", secs * 1000.0);
