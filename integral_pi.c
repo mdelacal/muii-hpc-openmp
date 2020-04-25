@@ -36,7 +36,7 @@ int main()
         
         /* Imprimos los resultados */
         printf("\nNº Threads: %d\tResultado final calculado: %1.15f\n", thr, result);
-        printf("Tiempo de cómputo: %.16g ms\n", secs * 1000.0);
+        printf("Tiempo de cómputo: %5.5f ms\n", secs * 1000.0);
     }
 }
 
@@ -51,7 +51,7 @@ double pi(int n, int t)
     /* Establecer numero de threads t en esta ejecución */
     omp_set_num_threads(t);
 
-    /* Paralelización con OpenMP de un bucle for, con reducción en la operación de suma 
+    /* Paralelización con OpenMP de un bucle for, aplicando reducción en la operación de suma 
        y variable privada x en los cálculos */
     #pragma omp parallel for private(x) reduction(+: sum)
         for (i = 0; i < n; i++){
