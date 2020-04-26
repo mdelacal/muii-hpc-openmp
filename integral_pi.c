@@ -7,7 +7,6 @@
 /* Bibliotecas */
 #include <stdio.h>
 #include <omp.h>
-#include <time.h>
 
 /* Función para el cálculo de la integral, con n iteraciones y t threads */
 double pi(int n, int t); 
@@ -44,7 +43,6 @@ double pi(int n, int t)
 {
     /* Variables para los cálculos de la integral */
     int i;
-    int chunk = 4;
     double dx, sum, x;
     dx = 1.0 / n;
     
